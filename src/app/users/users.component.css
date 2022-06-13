@@ -1,0 +1,42 @@
+.submit-btn {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.view-btn {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+btn :disabled {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.edit-btn {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.delete-btn {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 0.75em;
+  overflow: hidden;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 1em;
+  background-color: #f3f4f6;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+td {
+  background-color: white;
+}

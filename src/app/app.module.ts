@@ -8,10 +8,9 @@ import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, UpdateUserComponent],
+  declarations: [AppComponent, UsersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

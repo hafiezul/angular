@@ -1,3 +1,8 @@
+btn :disabled {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
 .submit-btn {
   background-color: #dbeafe;
   color: #1d4ed8;
@@ -6,11 +11,6 @@
 .view-btn {
   background-color: #d1fae5;
   color: #047857;
-}
-
-btn :disabled {
-  background-color: #dbeafe;
-  color: #1d4ed8;
 }
 
 .edit-btn {

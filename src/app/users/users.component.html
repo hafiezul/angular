@@ -1,4 +1,4 @@
-<div class="col-md-6 col-lg-12" id="newUserDiv">
+<div class="col-md-6 col-lg-12">
   <h4 class="mb-3">{{ this.mode == "add" ? "Add" : "Update" }} user</h4>
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <div class="row g-3">
@@ -56,12 +56,12 @@
       <div class="col-12" *ngIf="this.mode == 'add'">
         <label for="RoleID" class="form-label">Role</label>
         <select class="form-control" id="RoleID" formControlName="RoleID">
-          <option value="1" disabled>Admin</option>
-          <option value="2" selected>User</option>
+          <!-- <option value="1" disabled>Admin</option> -->
+          <option value="2" selected="">User</option>
         </select>
       </div>
 
-      <div class="col-6" *ngIf="this.mode == 'add'">
+      <div class="col-6">
         <button
           type="submit"
           class="btn submit-btn"
@@ -70,26 +70,14 @@
           Create new user
         </button>
       </div>
-      <div class="col-6" *ngIf="this.mode == 'edit'">
-        <button type="submit" class="btn submit-btn m-1" (click)="updateUser()">
-          Update user
-        </button>
-        <button
-          type="submit"
-          class="btn delete-btn m-1"
-          (click)="cancelUpdate()"
-        >
-          Cancel update
-        </button>
-      </div>
     </div>
-
-    <hr class="my-4" />
   </form>
 </div>
 
+<div class="col-md-6 col-lg-12 mt-4"></div>
+
 <div class="col-md-6 col-lg-12">
-  <table class="">
+  <table>
     <thead>
       <tr>
         <th scope="col">Name</th>

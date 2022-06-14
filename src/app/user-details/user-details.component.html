@@ -63,15 +63,20 @@
             </select>
           </div> -->
         <div class="col-sm-6 mt-3">
+          <button class="btn edit-btn m-1" (click)="goBack()">Return</button>
           <button
             type="submit"
-            class="btn submit-btn"
+            class="btn submit-btn m-1"
             [disabled]="!userForm.valid"
           >
             Update
           </button>
         </div>
+        <div class="col-sm-6 mt-3"></div>
       </form>
+    </div>
+    <div class="col-md-6 col-lg-12">
+      <app-vehicles [vehicles]="user?.vehicles" [user]="user"></app-vehicles>
     </div>
   </div>
 </div>

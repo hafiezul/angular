@@ -1,87 +1,77 @@
-<div class="container py-4 sans">
-  <header class="pb-3 mb-4 border-bottom">
-    <a
-      href="/"
-      class="d-flex align-items-center text-dark text-decoration-none"
-    >
-      <span class="fs-4">Hi</span>
-    </a>
-  </header>
-  <div class="p-4 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-      <div class="col-md-6 col-lg-12">
-        <h4 class="mb-3">Editing {{ user?.Mailadresse }}</h4>
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="FirstName" class="form-label">First name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="FirstName"
-                formControlName="FirstName"
-                placeholder="First name"
-                value="{{ user?.FirstName }}"
-              />
-              <div class="invalid-feedback">Valid first name is required.</div>
-            </div>
-            <div class="col-sm-6">
-              <label for="LastName" class="form-label">Last name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="LastName"
-                formControlName="LastName"
-                placeholder="Last name"
-                value="{{ user?.LastName }}"
-              />
-              <div class="invalid-feedback">Valid last name is required.</div>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <label for="Mailadresse" class="form-label">Email</label>
+<div class="p-4 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <div class="col-md-6 col-lg-12">
+      <h4 class="mb-3">Editing {{ user?.Mailadresse }}</h4>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="FirstName" class="form-label">First name</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
-              id="Mailadresse"
-              formControlName="Mailadresse"
-              placeholder="Email"
-              value="{{ user?.Mailadresse }}"
+              id="FirstName"
+              formControlName="FirstName"
+              placeholder="First name"
+              value="{{ user?.FirstName }}"
             />
-            <div class="invalid-feedback">
-              Please enter a valid email address for shipping updates.
-            </div>
+            <div class="invalid-feedback">Valid first name is required.</div>
           </div>
-          <div class="col-sm-12">
-            <label for="password" class="form-label">Password</label>
+          <div class="col-sm-6">
+            <label for="LastName" class="form-label">Last name</label>
             <input
-              type="password"
+              type="text"
               class="form-control"
-              id="password"
-              formControlName="Password"
-              placeholder="Password"
-              value="{{ user?.Password }}"
+              id="LastName"
+              formControlName="LastName"
+              placeholder="Last name"
+              value="{{ user?.LastName }}"
             />
-            <div class="invalid-feedback">Please enter a valid password.</div>
+            <div class="invalid-feedback">Valid last name is required.</div>
           </div>
-          <!-- <div class="col-sm-12">
+        </div>
+        <div class="col-sm-12">
+          <label for="Mailadresse" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="Mailadresse"
+            formControlName="Mailadresse"
+            placeholder="Email"
+            value="{{ user?.Mailadresse }}"
+          />
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="Password"
+            placeholder="Password"
+            value="{{ user?.Password }}"
+          />
+          <div class="invalid-feedback">Please enter a valid password.</div>
+        </div>
+        <!-- <div class="col-sm-12">
             <label for="RoleID" class="form-label">Role</label>
             <select class="form-control" id="RoleID" formControlName="RoleID">
               <option value="1">Admin</option>
               <option value="2">User</option>
             </select>
           </div> -->
-          <div class="col-sm-6 mt-3">
-            <button
-              type="submit"
-              class="btn submit-btn"
-              [disabled]="!userForm.valid"
-            >
-              Update
-            </button>
-          </div>
-        </form>
-      </div>
+        <div class="col-sm-6 mt-3">
+          <button
+            type="submit"
+            class="btn submit-btn"
+            [disabled]="!userForm.valid"
+          >
+            Update
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

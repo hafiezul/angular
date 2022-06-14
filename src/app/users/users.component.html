@@ -1,136 +1,123 @@
-<div class="container py-4 sans">
-  <header class="pb-3 mb-4 border-bottom">
-    <a
-      href="/"
-      class="d-flex align-items-center text-dark text-decoration-none"
-    >
-      <span class="fs-4">Hi</span>
-    </a>
-  </header>
+<div class="p-4 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <div class="col-md-6 col-lg-12">
+      <h4 class="mb-3">{{ this.mode == "add" ? "Add" : "Update" }} user</h4>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="FirstName" class="form-label">First name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="FirstName"
+              formControlName="FirstName"
+              placeholder="First name"
+            />
+            <div class="invalid-feedback">Valid first name is required.</div>
+          </div>
 
-  <div class="p-4 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-      <div class="col-md-6 col-lg-12">
-        <h4 class="mb-3">{{ this.mode == "add" ? "Add" : "Update" }} user</h4>
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="FirstName" class="form-label">First name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="FirstName"
-                formControlName="FirstName"
-                placeholder="First name"
-              />
-              <div class="invalid-feedback">Valid first name is required.</div>
-            </div>
+          <div class="col-sm-6">
+            <label for="LastName" class="form-label">Last name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="LastName"
+              formControlName="LastName"
+              placeholder="Last name"
+              value=""
+            />
+            <div class="invalid-feedback">Valid last name is required.</div>
+          </div>
 
-            <div class="col-sm-6">
-              <label for="LastName" class="form-label">Last name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="LastName"
-                formControlName="LastName"
-                placeholder="Last name"
-                value=""
-              />
-              <div class="invalid-feedback">Valid last name is required.</div>
-            </div>
-
-            <div class="col-12">
-              <label for="Mailadresse" class="form-label">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="Mailadresse"
-                formControlName="Mailadresse"
-                placeholder="Email"
-                value=""
-              />
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="password" class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="Password"
-                formControlName="Password"
-              />
-              <div class="invalid-feedback">Please enter a valid password.</div>
-            </div>
-
-            <div class="col-12" *ngIf="this.mode == 'add'">
-              <label for="RoleID" class="form-label">Role</label>
-              <select class="form-control" id="RoleID" formControlName="RoleID">
-                <!-- <option value="1" disabled>Admin</option> -->
-                <option value="2" [selected]="">User</option>
-              </select>
-            </div>
-
-            <div class="col-6">
-              <button
-                type="submit"
-                class="btn submit-btn"
-                [disabled]="!userForm.valid"
-              >
-                Create new user
-              </button>
+          <div class="col-12">
+            <label for="Mailadresse" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="Mailadresse"
+              formControlName="Mailadresse"
+              placeholder="Email"
+              value=""
+            />
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
             </div>
           </div>
-        </form>
-      </div>
 
-      <div class="col-md-6 col-lg-12 mt-3">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Role</th>
-              <th scope="col" class="text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of users">
-              <td scope="row">{{ user.FirstName }} {{ user.LastName }}</td>
-              <td scope="row">{{ user.Mailadresse }}</td>
-              <td scope="row">{{ user.role.UserRole }}</td>
-              <td scope="row">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                  <button
-                    class="btn view-btn"
-                    (click)="viewVehicles(user)"
-                    *ngIf="user.vehicles.length > 0"
-                  >
-                    View vehicles
-                  </button>
-                  <a routerLink="user/{{ user.UserID }}">
-                    <button class="btn edit-btn" type="button">Edit</button>
-                  </a>
-                  <button class="btn delete-btn" type="button">Delete</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="m-1">
-          <ul class="pagination justify-content-end">
-            <li class="page-item" [class.disabled]="this.page == 1">
-              <button class="page-link" (click)="previousPage()">
-                Previous
-              </button>
-            </li>
-            <li class="page-item" [class.disabled]="this.page == totalPages">
-              <button class="page-link" (click)="nextPage()">Next</button>
-            </li>
-          </ul>
+          <div class="col-12">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="Password"
+              formControlName="Password"
+            />
+            <div class="invalid-feedback">Please enter a valid password.</div>
+          </div>
+
+          <div class="col-12" *ngIf="this.mode == 'add'">
+            <label for="RoleID" class="form-label">Role</label>
+            <select class="form-control" id="RoleID" formControlName="RoleID">
+              <!-- <option value="1" disabled>Admin</option> -->
+              <option value="2" [selected]="">User</option>
+            </select>
+          </div>
+
+          <div class="col-6">
+            <button
+              type="submit"
+              class="btn submit-btn"
+              [disabled]="!userForm.valid"
+            >
+              Create new user
+            </button>
+          </div>
         </div>
+      </form>
+    </div>
+
+    <div class="col-md-6 col-lg-12 mt-3">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td scope="row">{{ user.FirstName }} {{ user.LastName }}</td>
+            <td scope="row">{{ user.Mailadresse }}</td>
+            <td scope="row">{{ user.role.UserRole }}</td>
+            <td scope="row">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <button
+                  class="btn view-btn"
+                  (click)="viewVehicles(user)"
+                  *ngIf="user.vehicles.length > 0"
+                >
+                  View vehicles
+                </button>
+                <a routerLink="user/{{ user.UserID }}">
+                  <button class="btn edit-btn" type="button">Edit</button>
+                </a>
+                <button class="btn delete-btn" type="button">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="m-1">
+        <ul class="pagination justify-content-end">
+          <li class="page-item" [class.disabled]="this.page == 1">
+            <button class="page-link" (click)="previousPage()">Previous</button>
+          </li>
+          <li class="page-item" [class.disabled]="this.page == totalPages">
+            <button class="page-link" (click)="nextPage()">Next</button>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

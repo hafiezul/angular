@@ -93,13 +93,13 @@
             <td scope="row">{{ user.role.UserRole }}</td>
             <td scope="row">
               <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <button
+                <!-- <button
                   class="btn view-btn"
                   (click)="viewVehicles(user)"
                   *ngIf="user.vehicles.length > 0"
                 >
                   View vehicles
-                </button>
+                </button> -->
                 <a routerLink="user/{{ user.UserID }}">
                   <button class="btn edit-btn" type="button">Edit</button>
                 </a>

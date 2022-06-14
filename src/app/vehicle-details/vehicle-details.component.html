@@ -1,0 +1,67 @@
+<div class="p-4 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <div class="col-md-6 col-lg-12">
+      <h4 class="mb-3">Editing {{ vehicle?.VehicleMake }}</h4>
+      <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="FirstName" class="form-label">Vehicle Make</label>
+            <input
+              type="text"
+              class="form-control"
+              id="VehicleMake"
+              formControlName="VehicleMake"
+              placeholder="Vehicle Make"
+              value="{{ vehicle?.VehicleMake }}"
+            />
+            <div class="invalid-feedback">Valid is required.</div>
+          </div>
+          <div class="col-sm-6">
+            <label for="LastName" class="form-label">Vehicle Brand</label>
+            <input
+              type="text"
+              class="form-control"
+              id="VehicleBrand"
+              formControlName="VehicleBrand"
+              placeholder="Vehicle Brand"
+              value="{{ vehicle?.VehicleBrand }}"
+            />
+            <div class="invalid-feedback">Valid is required.</div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <label for="Mailadresse" class="form-label">Vehicle Year</label>
+          <input
+            type="email"
+            class="form-control"
+            id="VehicleYear"
+            formControlName="VehicleYear"
+            placeholder="Email"
+            value="{{ vehicle?.VehicleYear }}"
+          />
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+        <!-- <div class="col-sm-12">
+              <label for="RoleID" class="form-label">Role</label>
+              <select class="form-control" id="RoleID" formControlName="RoleID">
+                <option value="1">Admin</option>
+                <option value="2">User</option>
+              </select>
+            </div> -->
+        <div class="col-sm-6 mt-3">
+          <button class="btn edit-btn m-1" (click)="goBack()">Return</button>
+          <button
+            type="submit"
+            class="btn submit-btn m-1"
+            [disabled]="!vehicleForm.valid"
+          >
+            Update
+          </button>
+        </div>
+        <div class="col-sm-6 mt-3"></div>
+      </form>
+    </div>
+  </div>
+</div>

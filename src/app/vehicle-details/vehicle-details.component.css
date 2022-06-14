@@ -1,0 +1,14 @@
+btn :disabled {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.submit-btn {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.edit-btn {
+  background-color: #fef3c7;
+  color: #d97706;
+}

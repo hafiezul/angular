@@ -1,3 +1,4 @@
+import { Vehicle } from './vehicle-validator';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -78,10 +79,12 @@ export class VehiclesService {
    * Update vehicle
    */
   putVehicle(vehicle: any): Observable<any> {
-    return this.http.put<any>(this.url, vehicle, this.httpOptions).pipe(
-      tap((_: any) => {
-        console.log('updated vehicle');
-      })
-    );
+    return this.http
+      .put<any>(`${this.url}/${vehicle.VehicleID}`, vehicle, this.httpOptions)
+      .pipe(
+        tap((_: any) => {
+          console.log('updated vehicle');
+        })
+      );
   }
 }

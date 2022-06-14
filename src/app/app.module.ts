@@ -10,9 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
+import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, UserDetailsComponent, VehiclesComponent],
+  declarations: [AppComponent, UsersComponent, UserDetailsComponent, VehiclesComponent, VehicleDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

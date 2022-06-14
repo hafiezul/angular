@@ -52,9 +52,26 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  viewVehicles(user: User) {}
+  onDelete(user: User) {
+    let confirm = window.confirm(
+      `Are you sure you want to delete ${user.FirstName} ${user.LastName}?\nRemoving this user will also remove all the associated data\nThis action cannot be undone.`
+    );
 
-  editUser(user: User) {}
+    if (confirm) {
+      this.UsersService.deleteUser(user.UserID).subscribe((data: any) => {
+        // get status code
+        const status = data.status;
+
+        if (status === 200) {
+          this.getUsers(this.page);
+
+          alert('User deleted');
+        } else {
+          console.log('Error: ' + status);
+        }
+      });
+    }
+  }
 
   previousPage() {
     this.page--;

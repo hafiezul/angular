@@ -54,13 +54,28 @@
       <th scope="col">Make</th>
       <th scope="col">Brand</th>
       <th scope="col">Year</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let vehicle of vehicles">
-      <td>{{ vehicle.VehicleMake }}</td>
-      <td>{{ vehicle.VehicleBrand }}</td>
-      <td>{{ vehicle.VehicleYear }}</td>
+      <td scope="row">{{ vehicle.VehicleMake }}</td>
+      <td scope="row">{{ vehicle.VehicleBrand }}</td>
+      <td scope="row">{{ vehicle.VehicleYear }}</td>
+      <td scope="row">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+          <a routerLink="/vehicle/{{ vehicle.VehicleID }}">
+            <button class="btn edit-btn" type="button">Edit</button>
+          </a>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onDelete(vehicle)"
+          >
+            Delete
+          </button>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>

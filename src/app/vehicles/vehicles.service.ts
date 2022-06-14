@@ -51,10 +51,9 @@ export class VehiclesService {
    */
   getVehiclesByUser(userId: number, page: number): Observable<any> {
     return this.http
-      .get<any>(this.url, {
+      .get<any>(`${this.url}/user/${userId}`, {
         params: {
           page: page.toString(),
-          userId: userId.toString(),
         },
       })
       .pipe(
@@ -86,5 +85,16 @@ export class VehiclesService {
           console.log('updated vehicle');
         })
       );
+  }
+
+  /*
+   * Delete vehicle
+   */
+  deleteVehicle(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`).pipe(
+      tap((_: any) => {
+        console.log('deleted vehicle');
+      })
+    );
   }
 }

@@ -70,4 +70,15 @@ export class UsersService {
         })
       );
   }
+
+  /*
+   * Delete user
+   */
+  deleteUser(id: number): Observable<User> {
+    return this.http.delete<User>(`${this.url}/${id}`).pipe(
+      tap((_: any) => {
+        console.log('deleted user');
+      })
+    );
+  }
 }

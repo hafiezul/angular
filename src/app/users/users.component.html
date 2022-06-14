@@ -100,10 +100,16 @@
                 >
                   View vehicles
                 </button> -->
-                <a routerLink="user/{{ user.UserID }}">
+                <a routerLink="/user/{{ user.UserID }}">
                   <button class="btn edit-btn" type="button">Edit</button>
                 </a>
-                <button class="btn delete-btn" type="button">Delete</button>
+                <button
+                  class="btn delete-btn"
+                  type="button"
+                  (click)="onDelete(user)"
+                >
+                  Delete
+                </button>
               </div>
             </td>
           </tr>

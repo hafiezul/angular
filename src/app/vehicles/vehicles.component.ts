@@ -21,22 +21,21 @@ export class VehiclesComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  @Input('vehicles') vehicles: any = [];
+  vehicles: Vehicle[] = [];
   @Input('user') user: User | undefined;
-  // users: User[] = [];
   page: number = 1;
   totalPages: number = 1;
   userId: number = Number(this.route.snapshot.paramMap.get('UserID'));
 
   vehicleForm = this.fb.group({
-    // VehicleID: ['', Validators.required],
-    // UserID: ['', Validators.required],
     VehicleMake: ['', Validators.required],
     VehicleBrand: ['', Validators.required],
     VehicleYear: ['', Validators.required],
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getVehicles(this.userId, this.page);
+  }
 
   ngOnChanges() {
     this.getVehicles(this.userId, this.page);
@@ -52,7 +51,7 @@ export class VehiclesComponent implements OnInit {
   onSubmit() {
     // POST vehicle
     const data = {
-      UserID: this.user?.UserID,
+      UserID: this.userId,
       VehicleMake: this.vehicleForm.value.VehicleMake,
       VehicleBrand: this.vehicleForm.value.VehicleBrand,
       VehicleYear: this.vehicleForm.value.VehicleYear,
@@ -79,5 +78,23 @@ export class VehiclesComponent implements OnInit {
   nextPage() {
     this.page++;
     this.getVehicles(this.userId, this.page);
+  }
+
+  onDelete(vehicle: Vehicle) {
+    let confirm = window.confirm(
+      `Are you sure you want to delete ${vehicle.VehicleMake} ${vehicle.VehicleBrand}?\nRemoving this vehicle will also remove all the associated data\nThis action cannot be undone.`
+    );
+
+    if (confirm) {
+      this.VehiclesService.deleteVehicle(vehicle.VehicleID).subscribe(
+        (data: any) => {
+          const status = data.status;
+          if (status === 200) {
+            this.getVehicles(this.userId, this.page);
+            alert('Vehicle deleted');
+          }
+        }
+      );
+    }
   }
 }

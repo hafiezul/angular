@@ -36,6 +36,18 @@ export class UsersService {
   }
 
   /*
+   * Get user by id
+   */
+  getUser(id: number): Observable<User> {
+    console.log(`${this.url}/${id}`);
+    return this.http.get<User>(`${this.url}/${id}`).pipe(
+      tap((_: any) => {
+        console.log('fetched user');
+      })
+    );
+  }
+
+  /*
    * Post user
    */
   postUser(user: any): Observable<User> {
@@ -50,7 +62,6 @@ export class UsersService {
    * Put user
    */
   putUser(user: any): Observable<User> {
-    console.log(user);
     return this.http
       .put<User>(`${this.url}/${user.UserID}`, user, this.httpOptions)
       .pipe(

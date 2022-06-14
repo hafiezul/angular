@@ -8,9 +8,10 @@ import { UsersComponent } from './users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent],
+  declarations: [AppComponent, UsersComponent, UserDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
